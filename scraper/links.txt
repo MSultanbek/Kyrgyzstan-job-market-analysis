@@ -1,0 +1,8 @@
+title  data-qa="vacancy-title"
+salary  data-qa="vacancy-salary-compensation-type-net"
+company_name data-qa="vacancy-company-name"
+experience data-qa="work-experience-text"
+employment_type data-qa="common-employment-text"
+work_format data-qa="work-formats-text"description data-qa="vacancy-description"
+date_raw text content of .bloko-gap.bloko-gap_bottomlisting_
+url passed in directly — no scraping needed
