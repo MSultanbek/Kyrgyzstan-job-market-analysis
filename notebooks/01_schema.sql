@@ -1,3 +1,7 @@
+create database if not exists hhkg_jobs;
+use hhkg_jobs;
+
+
 CREATE TABLE companies (
     id    SERIAL PRIMARY KEY,
     company_name VARCHAR(100) NOT NULL UNIQUE
