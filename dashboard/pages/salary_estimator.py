@@ -2,11 +2,13 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import os
 
 def load_model():
-    model = joblib.load('../models/salary_model.pkl')
-    le_wf = joblib.load('../models/le_work_format.pkl')
-    le_et = joblib.load('../models/le_employment_type.pkl')
+    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model = joblib.load(os.path.join(base, '..', 'models', 'salary_model.pkl'))
+    le_wf = joblib.load(os.path.join(base, '..', 'models', 'le_work_format.pkl'))
+    le_et = joblib.load(os.path.join(base, '..', 'models', 'le_employment_type.pkl'))
     return model, le_wf, le_et
 
 TOP_SKILLS = ['Excel', 'Кыргызский', 'Русский', '1С', 'CRM', 'KPI',
