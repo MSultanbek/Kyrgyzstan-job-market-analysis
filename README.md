@@ -97,4 +97,5 @@ Requires PostgreSQL running locally with `hhkg_jobs` database.
 ## Author
 
 **Muratbekov Sultanbek** — Applied Mathematics and Informatics, Ala-Too International University, Bishkek
+
 [GitHub](https://github.com/MSultanbek)
