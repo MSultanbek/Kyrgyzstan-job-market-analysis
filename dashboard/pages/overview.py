@@ -46,7 +46,7 @@ def load_salaries(_engine):
 
 def render(engine):
     st.title("Bishkek Job Market — 2026")
-    st.write("Analysis of 800+ job vacancies from bishkek.headhunter.kg")
+    st.write("Analysis of job vacancies from bishkek.headhunter.kg")
 
     total, with_salary, avg_salary = load_metrics(engine)
     col1, col2, col3, col4 = st.columns(4)
