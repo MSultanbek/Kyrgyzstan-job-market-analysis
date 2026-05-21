@@ -24,6 +24,18 @@ def load_all_skills(_engine):
         ORDER BY s.skill_name
     """, _engine)['skill_name'].tolist()
 
+@st.cache_data
+def load_vacancies_for_skill(_engine, skill_name):
+    return pd.read_sql("""
+        SELECT v.title, c.company_name, v.salary_from, v.url
+        FROM vacancy_skills vs
+        JOIN skills s ON vs.skill_id = s.id
+        JOIN vacancies v ON vs.vacancy_id = v.id
+        JOIN companies c ON v.company_id = c.id
+        WHERE s.skill_name = %(skill)s
+        ORDER BY v.salary_from DESC NULLS LAST
+    """, _engine, params={"skill": skill_name})
+
 def render(engine):
     st.title("Skill Explorer")
     st.write("Select a skill to see its demand and average salary.")
@@ -40,6 +52,15 @@ def render(engine):
         col2.metric("Avg salary when required (сом)", f"{int(row['avg_salary'].values[0]):,}")
     else:
         st.info("No salary data available for this skill.")
+
+    st.divider()
+    st.subheader(f"Listings requiring {selected}")
+
+    vacancies = load_vacancies_for_skill(engine, selected)
+
+    for _, row in vacancies.iterrows():
+        salary = f"{int(row['salary_from']):,} сом" if pd.notna(row['salary_from']) else "Salary not listed"
+        st.markdown(f"**[{row['title']}]({row['url']})** — {row['company_name']} | {salary}")
 
     st.divider()
     st.subheader("All skills by demand")
