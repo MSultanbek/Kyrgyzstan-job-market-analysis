@@ -60,21 +60,21 @@ Three interactive pages:
 
 ## Project Structure
 
+```text
 ├── scraper/
-│   ├── crawler.py              # URL collection with pagination
-│   ├── parser.py               # Field extraction via data-qa selectors
-│   └── pipeline.py             # End-to-end orchestration
+│   ├── crawler.py               # URL collection with pagination
+│   ├── parser.py                # Field extraction via data-qa selectors
+│   └── pipeline.py              # End-to-end orchestration
 ├── notebooks/
-│   ├── 01_schema.sql           # SQL script for Creating the Database
-│   ├── 02_cleaning.ipynb       # Data cleaning + PostgreSQL loading
-│   ├── 03_eda.ipynb            # EDA and business questions
-│   └── 04_salary_model.ipynb   # ML salary predictor
+│   ├── 01_schema.sql            # SQL script for Creating the Database
+│   ├── 02_cleaning.ipynb        # Data cleaning + PostgreSQL loading
+│   ├── 03_eda.ipynb             # EDA and business questions
+│   └── 04_salary_model.ipynb    # ML salary predictor
 ├── dashboard/
-│   ├── app.py                  # Streamlit entry point
-│   └── pages/                  # Modular page components
-├── models/                     # Saved ML model
-├── visuals/                    # Chart exports
-└── notebooks/01_schema.sql     # PostgreSQL schema
+│   ├── app.py                   # Streamlit entry point
+│   └── pages/                   # Modular page components
+├── models/                      # Saved ML model
+└── visuals/                     # Chart exports
 
 
 ---
