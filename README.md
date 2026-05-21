@@ -75,7 +75,7 @@ Three interactive pages:
 │   └── pages/                   # Modular page components
 ├── models/                      # Saved ML model
 └── visuals/                     # Chart exports
-
+```
 
 ---
 
