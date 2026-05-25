@@ -1,0 +1,32 @@
+name: Weekly scrape and load
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'  # Every Monday at 3am UTC
+  workflow_dispatch:       # Also allows manual trigger
+
+jobs:
+  scrape-and-load:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas sqlalchemy psycopg2-binary playwright
+          playwright install chromium
+
+      - name: Run scraper
+        run: python scraper/pipeline.py
+
+      - name: Run loader
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: python scraper/load.py
