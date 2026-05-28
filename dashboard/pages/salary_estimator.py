@@ -11,9 +11,7 @@ def load_model():
     le_et = joblib.load(os.path.join(base, '..', 'models', 'le_employment_type.pkl'))
     return model, le_wf, le_et
 
-TOP_SKILLS = ['Excel', 'Кыргызский', 'Русский', '1С', 'CRM', 'KPI',
-              'Английский', 'MS Office', 'Word', 'SQL', 'API', 'BI',
-              'Google Sheets', 'SMM', 'Bitrix']
+TOP_SKILLS = ['Кыргызский', 'Русский', 'Английский', 'Excel', 'CRM', '1С', 'MS Office', 'KPI', 'Word', 'API', 'AutoCAD', 'Bitrix', 'Linux', 'Agile', 'SQL']
 
 EXPERIENCE_MAP = {'не требуется': 0, '1–3 года': 1, '3–6 лет': 2, 'более 6 лет': 3}
 
