@@ -6,3 +6,6 @@ __pycache__/
 data/raw/
 notebooks/.ipynb_checkpoints/
 .streamlit/secrets.toml
+dashboard/pages/__pycache__/
+dashboard/utils/__pycache__/
+scraper/__pycache__/

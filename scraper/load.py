@@ -5,7 +5,7 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from datetime import datetime
 
-DATABASE_URL ="postgresql://postgres.bcvqmcudccgqzivpqymh:Fnecf6575020612!@aws-1-ap-northeast-2.pooler.supabase.com:5432/postgres"
+DATABASE_URL = 'postgresql://postgres.bcvqmcudccgqzivpqymh:Fnecf6575020612!@aws-1-ap-northeast-2.pooler.supabase.com:5432/postgres'
 engine = create_engine(DATABASE_URL)
 
 RUSSIAN_MONTHS = {
@@ -18,46 +18,159 @@ RAW_DATA_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'raw')
 
 
 SKILLS = {
-    'Excel': r'excel',
-    'Word': r'\bword\b',
-    'PowerPoint': r'powerpoint',
-    'MS Office': r'ms\s*office|microsoft\s*office',
-    'Google Sheets': r'google\s*sheets',
-    'SQL': r'\bsql\b',
-    'Python': r'\bpython\b',
-    'R': r'\bR\b',
-    '1С': r'1[сc]',
-    'API': r'\bapi\b',
-    'BI': r'\bBI\b|power\s*bi|tableau|qlik',
-    'Power BI': r'power\s*bi',
-    'CRM': r'\bcrm\b',
-    'Bitrix': r'bitrix',
-    'AmoCRM': r'amocrm',
-    'KPI': r'\bkpi\b',
-    'SMM': r'\bsmm\b',
-    'SEO': r'\bseo\b',
-    'Google Ads': r'google\s*ads',
-    'Meta Ads': r'meta\s*ads|facebook\s*ads',
-    'Jira': r'\bjira\b',
-    'Confluence': r'confluence',
-    'Trello': r'trello',
-    'Agile': r'\bagile\b',
-    'Scrum': r'\bscrum\b',
-    'Git': r'\bgit\b',
-    'Docker': r'\bdocker\b',
-    'Linux': r'\blinux\b',
-    'AutoCAD': r'autocad',
-    'ArchiCAD': r'archicad',
-    '3ds Max': r'3ds\s*max',
-    'Adobe Photoshop': r'photoshop',
-    'Adobe Illustrator': r'illustrator',
-    'Adobe InDesign': r'indesign',
-    'Английский': r'английск',
-    'Русский': r'русск',
-    'Кыргызский': r'кыргызск',
-    'Китайский': r'китайск',
-    'Казахский': r'казахск',
-    'Турецкий': r'турецк',
+    # ── Productivity & Office ──────────────────────────────────────────────
+    "Excel":                r"\bexcel\b",
+    "Word":                 r"\bword\b",
+    "PowerPoint":           r"\bpowerpoint\b",
+    "MS Office":            r"ms office|microsoft office",
+    "Google Sheets":        r"google sheets|гугл\s*таблиц",
+    "Power Query":          r"power\s*query",
+    "Power Pivot":          r"power\s*pivot",
+
+    # ── Business Intelligence & Analytics ─────────────────────────────────
+    "BI":                   r"\bbi\b",
+    "Power BI":             r"power\s*bi",
+    "Tableau":              r"\btableau\b",
+    "Looker":               r"\blooker\b",
+    "Google Analytics":     r"google analytics",
+    "Яндекс.Метрика":       r"яндекс[\.\s]*метрик",
+    "Google Ads":           r"google ads",
+    "Meta Ads":             r"meta ads|facebook ads",
+    "TikTok Ads":           r"tiktok\s*ads",
+    "SEO":                  r"\bseo\b",
+    "SMM":                  r"\bsmm\b",
+    "KPI":                  r"\bkpi\b",
+    "DAU":                  r"\bdau\b",
+    "MAU":                  r"\bmau\b",
+    "CJM":                  r"\bcjm\b",
+
+    # ── ERP, CRM & Business Platforms ─────────────────────────────────────
+    "CRM":                  r"\bcrm\b",
+    "ERP":                  r"\berp\b",
+    "1С":                   r"1[сc][\s:\-]|1с\b|1c\b",
+    "SAP":                  r"\bsap\b",
+    "Bitrix":               r"bitrix|битрикс",
+    "HubSpot":              r"\bhubspot\b",
+    "Wildberries":          r"wildberries|вайлдберриз|\bwb\b",
+
+    # ── Databases ─────────────────────────────────────────────────────────
+    "SQL":                  r"\bsql\b",
+    "PostgreSQL":           r"\bpostgresql\b",
+    "MySQL":                r"\bmysql\b",
+    "MS SQL":               r"\bms\s*sql\b",
+    "Redis":                r"\bredis\b",
+    "Elasticsearch":        r"\belasticsearch\b",
+    "Firebase":             r"\bfirebase\b",
+    "NoSQL":                r"\bnosql\b",
+    "ELK Stack":            r"\belk\b",
+
+    # ── Programming Languages ─────────────────────────────────────────────
+    "Python":               r"\bpython\b",
+    "JavaScript":           r"\bjavascript\b",
+    "TypeScript":           r"\btypescript\b",
+    "Java":                 r"\bjava\b(?!script)",
+    "PHP":                  r"\bphp\b",
+    "C#":                   r"c#",
+    "C++":                  r"c\+\+",
+    "Swift":                r"\bswift\b",
+    "Kotlin":               r"\bkotlin\b",
+
+    # ── Frameworks & Runtimes ─────────────────────────────────────────────
+    "React":                r"\breact\b",
+    "Vue.js":               r"\bvue\.?js\b|\bvuejs\b",
+    "Node.js":              r"\bnode\.?js\b",
+    "Django":               r"\bdjango\b",
+    "FastAPI":              r"\bfastapi\b",
+    "Flask":                r"\bflask\b",
+    "Spring":               r"\bspring\b",
+    "Symfony":              r"\bsymfony\b",
+    "ASP.NET":              r"\basp\.net\b",
+    ".NET":                 r"(?<![a-z])\.net\b",
+
+    # ── Data Science & ML ─────────────────────────────────────────────────
+    "Pandas":               r"\bpandas\b",
+    "Selenium":             r"\bselenium\b",
+
+    # ── DevOps & Cloud ────────────────────────────────────────────────────
+    "Docker":               r"\bdocker\b",
+    "Docker Compose":       r"docker\s*compose",
+    "Kubernetes":           r"\bkubernetes\b|\bk8s\b",
+    "Linux":                r"\blinux\b",
+    "Git":                  r"\bgit\b",
+    "GitLab":               r"\bgitlab\b",
+    "GitHub":               r"\bgithub\b",
+    "AWS":                  r"\baws\b",
+    "Azure":                r"\bazure\b",
+    "GCP":                  r"\bgcp\b|google cloud",
+    "CI/CD":                r"\bci/cd\b|\bcicd\b",
+    "Rancher":              r"\brancher\b",
+    "OpenTelemetry":        r"\bopentelemetry\b",
+
+    # ── Messaging & API Protocols ─────────────────────────────────────────
+    "Kafka":                r"\bkafka\b",
+    "RabbitMQ":             r"\brabbitmq\b",
+    "REST API":             r"\brest\s*api\b|\brestful\b",
+    "API":                  r"\bapi\b",
+    "GraphQL":              r"\bgraphql\b",
+    "gRPC":                 r"\bgrpc\b",
+
+    # ── Web & Frontend ────────────────────────────────────────────────────
+    "HTML":                 r"\bhtml\b",
+    "CSS":                  r"\bcss\b",
+    "UI/UX":                r"\bui\b|\bux\b|ui/ux",
+
+    # ── Mobile ────────────────────────────────────────────────────────────
+    "Android":              r"\bandroid\b",
+    "iOS":                  r"\bios\b(?!\s*\d)",
+
+    # ── Design & Creative ─────────────────────────────────────────────────
+    "Figma":                r"\bfigma\b",
+    "Canva":                r"\bcanva\b",
+    "Adobe Photoshop":      r"photoshop",
+    "Adobe Illustrator":    r"\billustrator\b",
+    "Adobe InDesign":       r"\bindesign\b",
+    "Adobe Premiere":       r"\bpremiere\b",
+    "Adobe After Effects":  r"\bafter\s*effects\b",
+    "CorelDRAW":            r"\bcorel\b",
+    "Blender":              r"\bblender\b",
+    "3ds Max":              r"\b3ds\s*max\b",
+
+    # ── Architecture & Engineering ────────────────────────────────────────
+    "AutoCAD":              r"\bautocad\b",
+    "Revit":                r"\brevit\b",
+    "ArchiCAD":             r"\barchicad\b",
+    "SketchUp":             r"\bsketchup\b",
+
+    # ── Project Management & Collaboration ────────────────────────────────
+    "Jira":                 r"\bjira\b",
+    "Confluence":           r"\bconfluence\b",
+    "Notion":               r"\bnotion\b",
+    "Trello":               r"\btrello\b",
+    "Miro":                 r"\bmiro\b",
+    "YouTrack":             r"\byoutrack\b",
+    "Agile":                r"\bagile\b",
+    "SCRUM":                r"\bscrum\b",
+    "Kanban":               r"\bkanban\b",
+    "UML":                  r"\buml\b",
+    "BPMN":                 r"\bbpmn\b",
+    "SDLC":                 r"\bsdlc\b",
+
+    # ── Finance & Accounting Standards ────────────────────────────────────
+    "МСФО":                 r"\bмсфо\b",
+
+    # ── AI Tools ──────────────────────────────────────────────────────────
+    "ChatGPT":              r"\bchatgpt\b|chat gpt",
+    "Claude AI":            r"\bclaude\b",
+
+    # ── Languages ─────────────────────────────────────────────────────────
+    "Русский":              r"русск",
+    "Английский":           r"английск",
+    "Кыргызский":           r"кыргызск",
+    "Казахский":            r"казахск",
+    "Турецкий":             r"турецк",
+    "Немецкий":             r"немецк",
+    "Китайский":            r"китайск",
+    "Японский":             r"японск",
 }
 
 def parse_salary(salary_raw):
@@ -197,6 +310,9 @@ def load_to_db(df):
 
     new_df = vacancies_df[~vacancies_df['url'].isin(existing_urls)].copy()
     print(f"New vacancies to insert: {len(new_df)}")
+
+    new_df = new_df[new_df['title'].notna()].copy()
+    print(f"After filtering nulls: {len(new_df)} rows to insert")
 
     inserted = 0
     with engine.begin() as conn:

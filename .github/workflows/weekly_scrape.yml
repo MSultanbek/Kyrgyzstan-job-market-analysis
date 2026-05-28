@@ -2,8 +2,8 @@ name: Weekly scrape and load
 
 on:
   schedule:
-    - cron: '0 3 * * 1'  # Every Monday at 3am UTC
-  workflow_dispatch:       # Also allows manual trigger
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
 
 jobs:
   scrape-and-load:
@@ -24,9 +24,13 @@ jobs:
           playwright install chromium
 
       - name: Run scraper
-        run: python scraper/pipeline.py
+        run: |
+          cd scraper
+          python pipeline.py
 
       - name: Run loader
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: python scraper/load.py
+        run: |
+          cd scraper
+          python load.py

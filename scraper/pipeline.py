@@ -6,61 +6,8 @@ from crawler import scrape_job_urls
 from parser import parse_vacancy
 
 KEYWORDS = [
-    # ── IT / Software Development ──────────────────────────────
-    "Python Developer", "Java Developer", "JavaScript Developer",
-    "Frontend Developer", "Backend Developer", "Full Stack Developer",
-    "Mobile Developer", "iOS Developer", "Android Developer",
-    "DevOps Engineer", "Site Reliability Engineer", "Cloud Engineer",
-    "Software Engineer", "QA Engineer", "QA Automation Engineer",
-    "System Architect", "Solution Architect", "Tech Lead",
-    "Разработчик Python", "Разработчик Java", "Разработчик JavaScript",
-    "Фронтенд разработчик", "Бэкенд разработчик", "Фулстек разработчик",
-    "Мобильный разработчик", "iOS разработчик", "Android разработчик",
-    "DevOps инженер", "Системный архитектор", "Тимлид",
-    "1С разработчик", "1С программист",
 
-    # ── Data Science / Analytics / AI ─────────────────────────
-    "Data Scientist", "Data Analyst", "Data Engineer",
-    "Machine Learning Engineer", "ML Engineer", "AI Engineer",
-    "Business Intelligence Analyst", "BI Developer",
-    "Big Data Engineer", "NLP Engineer", "Computer Vision Engineer",
-    "Аналитик данных", "Инженер данных", "Специалист по машинному обучению",
-    "Инженер машинного обучения", "BI аналитик", "Бизнес аналитик",
-    "Исследователь данных",
-
-    # ── Cybersecurity ──────────────────────────────────────────
-    "Information Security Engineer", "Cybersecurity Analyst",
-    "Penetration Tester", "SOC Analyst",
-    "Инженер по информационной безопасности", "Специалист ИБ",
-    "Пентестер", "Аналитик SOC",
-
-    # ── IT Management ──────────────────────────────────────────
-    "Product Manager", "Product Owner", "Project Manager",
-    "Scrum Master", "IT Director", "CTO",
-    "Продуктовый менеджер", "Владелец продукта", "Проектный менеджер",
-    "Скрам мастер", "Директор по ИТ",
-
-    # ── Design / UX ────────────────────────────────────────────
-    "UX Designer", "UI Designer", "UX/UI Designer",
-    "Graphic Designer", "Motion Designer", "Product Designer",
-    "UX исследователь", "Дизайнер интерфейсов", "Графический дизайнер",
-    "Моушн дизайнер", "Веб дизайнер",
-
-    # ── Finance / Banking / Accounting ─────────────────────────
-    "Financial Analyst", "Financial Controller", "CFO",
-    "Accountant", "Chief Accountant", "Auditor",
-    "Risk Manager", "Compliance Officer", "Treasury Manager",
-    "Investment Analyst", "Credit Analyst",
-    "Финансовый аналитик", "Финансовый контролер", "Финансовый директор",
-    "Бухгалтер", "Главный бухгалтер", "Аудитор",
-    "Риск менеджер", "Специалист по комплаенс", "Казначей",
-    "Инвестиционный аналитик", "Кредитный аналитик",
-    "Экономист", "Финансист",
-
-    # ── Marketing / Advertising ────────────────────────────────
-    "Marketing Manager", "Digital Marketing Manager", "SEO Specialist",
-    "SMM Manager", "Content Manager", "Copywriter",
-    "Performance Marketing Manager", "PPC Specialist", "Brand Manager",
+    "PPC Specialist", "Brand Manager",
     "PR Manager", "Email Marketing Specialist",
     "Менеджер по маркетингу", "Диджитал маркетолог", "SEO специалист",
     "SMM менеджер", "Контент менеджер", "Копирайтер",
