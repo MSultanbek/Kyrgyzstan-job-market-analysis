@@ -40,7 +40,7 @@ Three interactive pages:
 - **Salary Estimator** — input experience + skills → predicted salary range
 
 > Salary model: Random Forest Regressor | MAE: 17,080 сом | R²: 0.155
-> Trained on 263 verified KGS salary data points
+> Trained on 410 verified KGS salary data points
 
 ---
 

@@ -18,7 +18,7 @@ EXPERIENCE_MAP = {'не требуется': 0, '1–3 года': 1, '3–6 ле
 def render(engine):
     st.title("Salary Estimator")
     st.write("Estimate your expected salary range based on experience and skills.")
-    st.warning("⚠️ This model is trained on 263 salary data points. Treat results as a rough range, not a precise prediction.")
+    st.warning("⚠️ This model is trained on 410 salary data points. Treat results as a rough range, not a precise prediction.")
 
     model, le_wf, le_et = load_model()
 
