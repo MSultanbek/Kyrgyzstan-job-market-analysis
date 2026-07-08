@@ -9,7 +9,7 @@ Built from scratch using real scraped data from bishkek.headhunter.kg — no pub
 
 | Finding | Data |
 |---|---|
-| Most demanded skill | Excel (163 listings, 19% of all roles) |
+| Most demanded skill | Languages (Kyrgyz, Russian, English) (163 listings, 19% of all roles) |
 | Dominant experience tier | 1–3 years (467 listings, 56% of market) |
 | Entry-level avg salary | 37,443 сом/month |
 | Senior-level avg salary | 91,111 сом/month |

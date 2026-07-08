@@ -94,9 +94,16 @@ def main():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
+        page.set_default_timeout(10000)
+
         for keyword in KEYWORDS:
             print(f"\n--- Scraping keyword: {keyword} ---")
-            urls = scrape_job_urls(page, keyword, max_pages=3)
+            
+            try:
+                urls = scrape_job_urls(page, keyword, max_pages=3)
+            except Exception as e:
+                print(f"Error fetching URL list for {keyword}: {e}")
+                continue
 
             for url in urls:
                 try:
@@ -111,6 +118,8 @@ def main():
         browser.close()
 
     output_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'raw', 'vacancies_all.json')
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=4)
 
